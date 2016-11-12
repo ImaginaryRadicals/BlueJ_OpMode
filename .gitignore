@@ -1,0 +1,20 @@
+
+# Vim
+*.swp
+
+#Doc Ordner
+**/doc
+*.class
+*.pkh
+*.ctxt
+.DS_Store
+
+# Ignore files prepended with a double underscore.
+__*
+
+
+# bluej package file should normally be ignored, because 
+# simply rearranging classes in the project view would show up 
+# as a change. However, without package.bluej, setting up the 
+# project takes extra steps the first time.
+# *.bluej
