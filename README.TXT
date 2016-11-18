@@ -3,4 +3,4 @@ PURPOSE OF PROJECT: Provide a place to test FTC java outside Android Studio, and
 VERSION or DATE: 11/11/2016
 HOW TO START THIS PROJECT: 
 AUTHORS: Mr. Ashley Trowell
-USER INSTRUCTIONS: Instantiate a new opMode() object, then execute runOpMode().
+USER INSTRUCTIONS: Run static main() in Simulation Class.
