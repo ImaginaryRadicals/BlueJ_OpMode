@@ -9,6 +9,16 @@
 public class Hardware_iRads
 {
 
+    // Basic Motor initialization
+    public DcMotor  leftDriveMotor      = new DcMotor();//null;
+    public DcMotor  rightDriveMotor     = new DcMotor();//null;
+    public DcMotor  leftLaunchMotor     = new DcMotor();//null;
+    public DcMotor  rightLaunchMotor    = new DcMotor();//null;
+    public DcMotor  liftMotor           = new DcMotor();//null;
+    //Servo sim not yet implemented:
+    //public Servo    launchTrigger        = null;
+    
+    
     // Robot Hardware Constants
     public static final double LAUNCH_WHEEL_DIAMETER_INCHES =  4;
     public static final double DRIVE_WHEEL_DIAMETER_INCHES  =  4;
@@ -26,7 +36,6 @@ public class Hardware_iRads
     public static final int MAX_DRIVE_SPEED_TPS     =  1680 ; // Ticks per second
     public static final int LIFT_MAX_SPEED_TPS      =  1680 ; // Ticks per second
     public static final int MAX_LAUNCH_SPEED_TPS    =   280 ; // Ticks per second
-
 
 
 
