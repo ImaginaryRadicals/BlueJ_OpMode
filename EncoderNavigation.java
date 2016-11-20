@@ -91,7 +91,7 @@ public class EncoderNavigation {
         absolutePositionDistance_mm = ( Math.abs(stepsLeft) + Math.abs(stepsRight) ) /2 *
                 robot.DRIVE_WHEEL_MM_PER_ROT / robot.DRIVE_WHEEL_STEPS_PER_ROT;
 
-        calculateRelativeResults();
+        calculateRelativeResults2();
         calculateAbsoluteResults();
         calculatePositionConfidence();
     }
@@ -165,7 +165,6 @@ public class EncoderNavigation {
 
     public void printResults() {
         telemetry.addData("Steps", String.format("Left: %d, Right: %d",stepsLeft,stepsRight) );
-        telemetry.addData("Radius", String.format("%.0f mm from center.",radiusFromCenter_mm) );
 //        telemetry.addData("rotationMode",rotationMode);
 //        telemetry.addData("rotationCenter",rotationCenter); // sign of radiusFromCenter has same info. Redundant.
         telemetry.addData("arcLength", String.format("%.0f mm ",arcDistance_mm) );
@@ -203,7 +202,6 @@ public class EncoderNavigation {
             h = 0;
             x = 0;
             y = arc;
-            return; //Bad DEBUG
         } else if (s1 == -s2) {
             // Rotating in place
             rc = 0;  arc = 0; // not used.
@@ -212,10 +210,18 @@ public class EncoderNavigation {
             y = 0;
         } else {
             rc = w * s1 /( s1 - s2) - w/2;
-            h = arc / rc * DRIVE_MM_PER_STEP * (180/Math.PI);
-            x = rc * (1 - Math.cos( h * (180/Math.PI)));
-            y = rc * Math.sin( h * (180/Math.PI));
+            h = -arc / rc * (180/Math.PI);
+            x = rc * (1 - Math.cos( h * (Math.PI/180)));
+            y = rc * Math.sin( h * (Math.PI/180));
         }
+
+
+        // Outputs
+        radiusFromCenter_mm = rc;
+        arcDistance_mm = arc;
+        deltaHeading_deg = h;
+        deltaRobotX_mm = x;
+        deltaRobotY_mm = y;
 
         isRelativeCalculated = true;
 
