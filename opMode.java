@@ -20,14 +20,87 @@ public class opMode
 
     public void runOpMode() {
 
+        int DIST = 700; //mm
+
         telemetry.addData("Status","Running");
         telemetry.addData("robotWidth",String.format("%.1f mm",robot.WHEELBASE_WIDTH_MM));
         telemetry.addData("time",String.format("%.3f",runtime.time()) + " seconds\n");
+
+        // No translation 
+        encoderNav.setSteps(0,0);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
         
-        encoderNav.setSteps(-700,700);
+        encoderNav.setSteps(-DIST,DIST);
         encoderNav.printResults();
         telemetry.addData("","\n");
 
+        encoderNav.setSteps(DIST,-DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+ 
+        encoderNav.setSteps(-DIST+1,DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        // Translate without rotation
+        encoderNav.setSteps(DIST,DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(-DIST,-DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        // Rotating motions
+        encoderNav.setSteps(1,DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+        
+        encoderNav.setSteps(0,DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(-1,DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(DIST,1);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+ 
+        encoderNav.setSteps(DIST,0);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(DIST,-1);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        // negative DIST
+        encoderNav.setSteps(1,-DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+        
+        encoderNav.setSteps(0,-DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(-1,-DIST);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(-DIST,1);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+ 
+        encoderNav.setSteps(-DIST,0);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
+
+        encoderNav.setSteps(-DIST,-1);
+        encoderNav.printResults();
+        telemetry.addData("","\n");
     }
 
 }
