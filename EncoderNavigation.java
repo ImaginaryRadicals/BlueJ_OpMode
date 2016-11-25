@@ -167,7 +167,7 @@ public class EncoderNavigation {
         telemetry.addData("Steps", String.format("Left: %d, Right: %d",stepsLeft,stepsRight) );
 //        telemetry.addData("rotationMode",rotationMode);
 //        telemetry.addData("rotationCenter",rotationCenter); // sign of radiusFromCenter has same info. Redundant.
-        telemetry.addData("arcLength", String.format("%.0f mm ",arcDistance_mm) );
+        telemetry.addData("arcLength", String.format("%.1f mm ",arcDistance_mm) );
         telemetry.addData("deltaHeading", String.format("%.1f deg ",deltaHeading_deg) ); // positive CCW
         telemetry.addData("RobotX", String.format("%.1f mm",deltaRobotX_mm) );
         telemetry.addData("RobotY", String.format("%.1f mm",deltaRobotY_mm) );
@@ -194,7 +194,7 @@ public class EncoderNavigation {
         double h = 0; // heading, deg
 
         // Calculate arc length
-        arc = (s1 + s2)/2 * DRIVE_MM_PER_STEP;
+        arc = (s1 + s2)/2.0 * DRIVE_MM_PER_STEP;
 
         // Calculate arc radius, delta x,y,heading
         if (s1 == s2) {
@@ -212,7 +212,7 @@ public class EncoderNavigation {
             rc = w * s1 /( s1 - s2) - w/2;
             h = -arc / rc * (180/Math.PI);
             x = rc * (1 - Math.cos( h * (Math.PI/180)));
-            y = rc * Math.sin( h * (Math.PI/180));
+            y = -rc * Math.sin( h * (Math.PI/180)); // negative radius.
         }
 
 
